@@ -1,0 +1,28 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX chembl: <http://hcls.sindice.com/chembl_vocabulary:>
+PREFIX sider: <http://hcls.sindice.com/sider_vocabulary:>
+PREFIX drugbank: <http://hcls.sindice.com/drugbank_vocabulary:>
+
+SELECT DISTINCT ?cmpd ?compound_name ?mw ?inchi ?inchiKey ?smiles ?alogp ?hha ?hhd ?num_ro5_violations ?psa ?rtb ?affectedOrganism ?biotransformation ?indication ?proteinBinding ?toxicity ?description WHERE {
+	?cmpd <http://purl.org/dc/elements/1.1/title> ?compound_name ;
+			   <http://hcls.sindice.com/chembl_vocabulary:smiles> [ rdf:value ?smiles ] ;
+			   <http://hcls.sindice.com/chembl_vocabulary:alogp> [ rdf:value ?alogp ];
+			   <http://hcls.sindice.com/chembl_vocabulary:full_molecular_weight> [ rdf:value ?mw ] ;
+			   <http://hcls.sindice.com/chembl_vocabulary:rule_of_5_violations> [ rdf:value ?num_ro5_violations] ;
+			   <http://hcls.sindice.com/chembl_vocabulary:standard_inchi_key> [ rdf:value ?inchiKey ]  ;
+			   <http://hcls.sindice.com/chembl_vocabulary:hydrogen_bond_donors> [ rdf:value ?hha ];
+			   <http://hcls.sindice.com/chembl_vocabulary:hydrogen_bond_donors>  [rdf:value ?hhd ] ;
+			   <http://hcls.sindice.com/chembl_vocabulary:rotatable_bonds> [ rdf:value ?rtb ] ;
+			   <http://hcls.sindice.com/chembl_vocabulary:polar_surface_area> [ rdf:value ?psa ];
+			   <http://hcls.sindice.com/chembl_vocabulary:standard_inchi> [ rdf:value ?inchi ] ;
+			   <http://hcls.sindice.com/chembl_vocabulary:acd_logp> [ rdf:value ?logp ] ;
+			   <http://hcls.sindice.com/chembl_vocabulary:acd_logd> [ rdf:value ?logd ] .
+
+
+OPTIONAL { [ owl:equivalentClass ?cmpd ] drugbank:toxicity ?toxicity. }
+OPTIONAL { [ owl:equivalentClass ?cmpd ] rdfs:comment ?description. }
+OPTIONAL { [ owl:equivalentClass ?cmpd ] drugbank:biotransformation ?biotransformation . }
+OPTIONAL { [ owl:equivalentClass ?cmpd ] drugbank:indication ?indication . }
+OPTIONAL { [ owl:equivalentClass ?cmpd ] drugbank:affected_organism ?affectedOrganism . }
+OPTIONAL { [ owl:equivalentClass ?cmpd ] drugbank:protein_binding ?proteinBinding . }
+}LIMIT 10 

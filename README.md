@@ -1,4 +1,4 @@
-hcls-queries
-============
+HCLS SindiceTech
+================
 
-repository of queries for the HCLS sindice sparql endpoint
+Queries developed as examples for the HCLS sparql endpoint.
