@@ -1,0 +1,25 @@
+# query for side effects for a compound based on its name or brand name
+# in this case the default query is for all side effects of aspirin.
+
+PREFIX drugbank: <http://hcls.sindice.com/drugbank_vocabulary:>
+PREFIX sider: <http://hcls.sindice.com/sider_vocabulary:>
+SELECT DISTINCT ?se ?se_title
+WHERE{
+{		?cmpd a sider:Drug ;
+			rdfs:label ?cmpd_name ;
+			sider:side_effect ?se .
+			?se <http://purl.org/dc/terms/title> ?se_title .}
+UNION{
+		?cmpd owl:equivalentClass [ a sider:Drug; sider:side_effect ?se  ] ;
+		drugbank:synonym ?cmpd_name .
+                                                        ?se <http://purl.org/dc/terms/title> ?se_title .
+}
+UNION {
+		?cmpd owl:equivalentClass [ a sider:Drug ;sider:side_effect ?se  ] ;
+		drugbank:brand ?cmpd_name .
+	?se <http://purl.org/dc/terms/title> ?se_title .
+
+}
+
+FILTER REGEX(?cmpd_name,"aspirin","i")
+} 
