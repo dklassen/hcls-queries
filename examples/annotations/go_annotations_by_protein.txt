@@ -1,0 +1,11 @@
+# query for Gene Ontology (GO) annotations for a protein
+# query requires ?protein to be replaced by uniprot URL for 
+# a protein.
+
+PREFIX goa: <http://hcls.sindice.com/goa_vocabulary:>
+
+SELECT ?annotation  WHERE {
+[] a goa:Annotation_Entry ;
+		<http://hcls.sindice.com/goa_vocabulary:is_about> ?protein ;
+		<http://hcls.sindice.com/goa_vocabulary:annotation> ?annotation .
+} 

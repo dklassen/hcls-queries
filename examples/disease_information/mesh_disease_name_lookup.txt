@@ -1,11 +1,12 @@
 # mesh_disease_name_lookup.txt
 # lookup the MESH(medical subject headings) identifier for a given disease name
-# based on substring matching 
+# based on substring matching. This example queries for diseases with "Alzheimer"
+# in the title.
 
 PREFIX ctd: <http://hcls.sindice.com/ctd_vocabulary:>
 SELECT DISTINCT ?disease ?disease_name  
 WHERE {
 	?disease a ctd:Disease .
 	?disease <http://purl.org/dc/terms/title> ?disease_name .
-FILTER regex(?disease_name,\"#{name_lookup}\",\"i\") }
+FILTER regex(?disease_name,"Alzheimer","i") }
 LIMIT 100

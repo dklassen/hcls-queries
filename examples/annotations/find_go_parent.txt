@@ -1,0 +1,11 @@
+# for a given GO URI find its parent identifier in the GO ontology
+# replace <#{go_uri}> with the URI of the GO term to find its parent
+
+PREFIX goa: <http://hcls.sindice.com/goa_vocabulary:>
+SELECT  ?go_parent_name 
+WHERE
+{
+	<#{go_uri}> rdfs:subClassOf ?go_parent .
+	?go_parent rdfs:label ?go_parent_name .
+}
+QUERY

@@ -1,0 +1,30 @@
+#compound_uris_for_name.txt
+# replace 
+PREFIX drugbank: <http://hcls.sindice.com/drugbank_vocabulary:>
+PREFIX chembl: <http://hcls.sindice.com/chembl_vocabulary:>
+SELECT *
+WHERE {
+{
+	?cmpd a chembl:Compound ;
+	rdfs:label ?cmpd_name . 
+	FILTER REGEX(?cmpd_name,"Aspirin","i")
+} 
+UNION
+{
+	?cmpd a chembl:Compound ;
+	chembl:synonym ?cmpd_name .
+	FILTER REGEX(?cmpd_name,"Aspirin","i")
+}
+UNION
+{
+	?cmpd a drugbank:Drug ;
+	drugbank:synonym ?cmpd_name .
+	FILTER REGEX(?cmpd_name,"Aspirin","i")
+}
+UNION
+{
+	?cmpd a drugbank:Drug ;
+	drugbank:brand ?cmpd_name .
+	FILTER REGEX(?cmpd_name,"Aspirin","i")
+}
+} LIMIT 100

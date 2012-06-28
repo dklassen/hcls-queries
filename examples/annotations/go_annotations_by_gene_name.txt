@@ -1,0 +1,14 @@
+# query the Gene Ontology Annotation database for protein annotations for related
+# genes by Human Nomenclature identifier code.
+
+PREFIX goa: <http://hcls.sindice.com/goa_vocabulary:>
+
+SELECT ?annotation ?gene_name WHERE {
+[] a goa:Annotation_Entry ;
+	<http://hcls.sindice.com/goa_vocabulary:is_about> ?protein ;
+	<http://hcls.sindice.com/goa_vocabulary:annotation> ?annotation .
+
+?protein <http://hcls.sindice.com/goa_vocabulary:gene> ?gene .
+?gene <http://hcls.sindice.com/goa_vocabulary:synonym> ?gene_name .
+FILTER REGEX(?gene_name,"ABC","i")
+}
