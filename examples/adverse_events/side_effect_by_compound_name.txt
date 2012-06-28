@@ -5,19 +5,20 @@ PREFIX drugbank: <http://hcls.sindice.com/drugbank_vocabulary:>
 PREFIX sider: <http://hcls.sindice.com/sider_vocabulary:>
 SELECT DISTINCT ?se ?se_title
 WHERE{
-{		?cmpd a sider:Drug ;
-			rdfs:label ?cmpd_name ;
-			sider:side_effect ?se .
-			?se <http://purl.org/dc/terms/title> ?se_title .}
+{		
+	?cmpd a sider:Drug ;
+		rdfs:label ?cmpd_name ;
+		sider:side_effect ?se .
+		?se <http://purl.org/dc/terms/title> ?se_title .}
 UNION{
-		?cmpd owl:equivalentClass [ a sider:Drug; sider:side_effect ?se  ] ;
-		drugbank:synonym ?cmpd_name .
-                                                        ?se <http://purl.org/dc/terms/title> ?se_title .
+	?cmpd owl:equivalentClass [ a sider:Drug; sider:side_effect ?se  ] ;
+	drugbank:synonym ?cmpd_name .
+                                                    ?se <http://purl.org/dc/terms/title> ?se_title .
 }
 UNION {
-		?cmpd owl:equivalentClass [ a sider:Drug ;sider:side_effect ?se  ] ;
-		drugbank:brand ?cmpd_name .
-	?se <http://purl.org/dc/terms/title> ?se_title .
+	?cmpd owl:equivalentClass [ a sider:Drug ;sider:side_effect ?se  ] ;
+	drugbank:brand ?cmpd_name .
+?se <http://purl.org/dc/terms/title> ?se_title .
 
 }
 
