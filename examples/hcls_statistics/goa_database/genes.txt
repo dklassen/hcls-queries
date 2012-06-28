@@ -1,0 +1,5 @@
+PREFIX goa: <http://hcls.sindice.com/goa_vocabulary:>
+SELECT COUNT DISTINCT ?gene
+WHERE{
+	?gene a goa:Gene .
+}

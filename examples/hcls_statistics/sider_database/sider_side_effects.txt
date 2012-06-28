@@ -1,0 +1,5 @@
+PREFIX sider: <http://hcls.sindice.com/sider_vocabulary:>
+SELECT COUNT DISTINCT ?side_effect
+WHERE{
+	?side_effect a sider:Side_Effect .
+}

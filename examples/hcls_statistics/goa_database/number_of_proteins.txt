@@ -1,0 +1,5 @@
+PREFIX goa: <http://hcls.sindice.com/goa_vocabulary:>
+SELECT COUNT DISTINCT ?protein
+WHERE{
+	?protein a goa:Protein .
+}

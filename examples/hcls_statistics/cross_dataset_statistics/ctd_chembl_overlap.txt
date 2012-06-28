@@ -1,0 +1,8 @@
+PREFIX ctd: <http://hcls.sindice.com/ctd_vocabulary:>
+PREFIX chembl: <http://hcls.sindice.com/chembl_vocabulary:>
+SELECT COUNT DISTINCT ?ctd
+WHERE{
+	?ctd a ctd:Chemical ;
+		owl:equivalentClass ?chembl . 
+	?chembl a chembl:Compound .
+}

@@ -1,0 +1,9 @@
+PREFIX ctd: <http://hcls.sindice.com/ctd_vocabulary:>
+PREFIX chembl: <http://hcls.sindice.com/chembl_vocabulary:>
+PREFIX sider: <http://hcls.sindice.com/sider_vocabulary:>
+SELECT COUNT DISTINCT ?sider
+WHERE{
+	?sider a sider:Drug;
+		owl:equivalentClass ?mesh .
+	?mesh a ctd:Chemical .
+}
