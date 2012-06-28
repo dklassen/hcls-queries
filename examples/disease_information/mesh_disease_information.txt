@@ -1,0 +1,20 @@
+#mesh_disease_information.txt
+# retrieve all information about interactions between a chemical and a supplied
+# mesh URI.
+# *will need to replace <#{uri_lookup}> with the uri you require
+
+PREFIX chembl: <http://hcls.sindice.com/chembl_vocabulary:>
+PREFIX ctd: <http://hcls.sindice.com/ctd_vocabulary:>
+SELECT DISTINCT ?disease_name ?compound_name ?compound_comment ?pubmed_id ?evidence_type 
+WHERE {
+		[] a ctd:Chemical_Disease_Association ;
+		<http://hcls.sindice.com/ctd_vocabulary:chemical> ?cmpd ;
+		<http://hcls.sindice.com/ctd_vocabulary:disease> <#{uri_lookup}> ;
+		ctd:reference ?pubmed_id .
+		?cmpd <http://www.w3.org/2000/01/rdf-schema#label> ?compound_name .
+		<#{uri_lookup}> <http://purl.org/dc/terms/title> ?disease_name .
+	OPTIONAL { [] ctd:direct_evidence ?evi .
+		?evi <http://purl.org/dc/terms/title> ?evidence_type } .
+	OPTIONAL {?cmpd <http://www.w3.org/2000/01/rdf-schema#comment> ?compound_comment .}
+}
+LIMIT 2000
