@@ -1,0 +1,13 @@
+# QUERY to retrieve disease names and associated gene names 
+
+PREFIX omim: <http://hcls.sindice.com/omim_vocabulary:>
+SELECT ?disease_name ?gene_name (sql:GROUP_CONCAT(?gene_syn, ', ')) as ?gene_synonyms ?gene_location
+WHERE {
+	?disorder a omim:Disorder ;
+		<http://purl.org/dc/elements/1.1/title> ?disease_name ;
+		<http://hcls.sindice.com/omim_vocabulary:gene> ?gene.
+	?gene dc:title ?gene_name .
+	?gene <http://hcls.sindice.com/goa_vocabulary:synonym> ?gene_syn .
+	?disorder <http://hcls.sindice.com/omim_vocabulary:cytogenetic_location> ?loc .
+	?loc <http://www.w3.org/1999/02/22-rdf-syntax-ns#value> ?gene_location.
+} LIMIT 1000
