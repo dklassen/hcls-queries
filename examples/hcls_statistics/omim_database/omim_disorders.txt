@@ -1,0 +1,5 @@
+PREFIX omim: <http://hcls.sindice.com/omim_vocabulary:>
+SELECT COUNT(DISTINCT ?disorder)
+WHERE{
+ ?disorder a omim:Disorder .
+}

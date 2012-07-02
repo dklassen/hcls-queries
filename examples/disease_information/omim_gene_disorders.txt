@@ -1,4 +1,5 @@
-# QUERY to retrieve disease names and associated gene names 
+# omim_gene_disorders.txt
+# QUERY to retrieve disorder names and associated gene names 
 
 PREFIX omim: <http://hcls.sindice.com/omim_vocabulary:>
 SELECT ?disease_name ?gene_name (sql:GROUP_CONCAT(?gene_syn, ', ')) as ?gene_synonyms ?gene_location
