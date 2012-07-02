@@ -1,0 +1,7 @@
+# drugbank_drugs.txt
+# provide the counts for the number of distinct drugs in the drugbank database
+PREFIX drugbank: <http://hcls.sindice.com/drugbank_vocabulary:>
+SELECT COUNT(DISTINCT ?drug)
+WHERE{
+	?drug a drugbank:Drug .
+}

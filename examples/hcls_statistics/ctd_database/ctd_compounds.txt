@@ -1,0 +1,6 @@
+# number of compounds in the ctd database
+PREFIX ctd: <http://hcls.sindice.com/ctd_vocabulary:>
+SELECT COUNT( DISTINCT ?cmpd )
+WHERE {
+	?cmpd a ctd:Chemical .
+}

@@ -1,0 +1,7 @@
+#ctd_genes.txt
+# count the number of distinct genes in the comparative toxicogenomics dataset
+PREFIX ctd: <http://hcls.sindice.com/ctd_vocabulary:>
+SELECT COUNT(DISTINCT ?ctd_gene)
+WHERE{
+	?ctd_gene a ctd:Gene .
+}

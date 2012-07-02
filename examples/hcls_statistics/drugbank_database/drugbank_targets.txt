@@ -1,0 +1,7 @@
+# drugbank_targets.txt
+# provide the counts for the number of distinct targets in the drugbank database
+PREFIX drugbank: <http://hcls.sindice.com/drugbank_vocabulary:>
+SELECT COUNT(DISTINCT ?target)
+WHERE{
+	?target a drugbank:Target .
+}

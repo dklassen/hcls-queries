@@ -1,0 +1,9 @@
+# ctd_disease.txt
+# count the number of distinct diseases using the MeSH vocabulary in the
+# comparative toxicogenomics database.
+
+PREFIX ctd: <http://hcls.sindice.com/ctd_vocabulary:>
+SELECT COUNT(DISTINCT ?ctd_disease)
+WHERE{
+	?ctd_dsiease a ctd:Disease .
+}
