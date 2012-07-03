@@ -7,8 +7,10 @@ PREFIX chembl: <http://hcls.sindice.com/chembl_vocabulary:>
 PREFIX sider: <http://hcls.sindice.com/sider_vocabulary:>
 PREFIX dc: <http://purl.org/dc/terms/>
 SELECT DISTINCT ?side_effect ?se_title
-FROM <http://hcls.sindice.com/sider>
 FROM <http://hcls.sindice.com/chembl>
+FROM <http://hcls.sindice.com/sider>
+FROM <http://hcls.sindice.com/drugbank>
+FROM <http://hcls.sindice.com/hcls_mapping>
 WHERE {
 {
 	?sider_drug a sider:Drug ;

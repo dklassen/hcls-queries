@@ -13,7 +13,7 @@ WHERE{
 UNION{
 	?cmpd owl:equivalentClass [ a sider:Drug; sider:side_effect ?se  ] ;
 	drugbank:synonym ?cmpd_name .
-                                                    ?se <http://purl.org/dc/terms/title> ?se_title .
+    ?se <http://purl.org/dc/terms/title> ?se_title .
 }
 UNION {
 	?cmpd owl:equivalentClass [ a sider:Drug ;sider:side_effect ?se  ] ;

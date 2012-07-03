@@ -1,0 +1,30 @@
+# protein_information.txt
+# returns information about the protein in the cache. Essentially this is the "target by name" lookup.
+
+PREFIX drugbank: <http://hcls.sindice.com/drugbank_vocabulary:>
+
+ PREFIX c2b2r_chembl: <http://chem2bio2rdf.org/chembl/resource/>
+ PREFIX drugbank: <http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/>
+ PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+ SELECT DISTINCT ?target_name ?target_type ?description ?organism ?keywords ?synonyms 
+   ?cellularLocation ?molecularWeight ?numberOfResidues ?pdbIdPage ?specificFunction ?theoreticalPi 
+ WHERE {
+   GRAPH <http://larkc.eu#Fixedcontext> {
+     <uri_value> skos:prefLabel ?target_name 
+   }
+   GRAPH <http://www.chem2bio2rdf.org/ChEMBL> {
+     <uri_value> c2b2r_chembl:keywords ?keywords; c2b2r_chembl:description ?description ; 
+     c2b2r_chembl:target_type ?target_type ; c2b2r_chembl:organism ?organism ; 
+     c2b2r_chembl:synonyms ?synonyms 
+   }
+   OPTIONAL {
+     GRAPH <http://linkedlifedata.com/resource/drugbank> { 
+       OPTIONAL { <uri_value> drugbank:cellularLocation ?cellularLocation }
+       OPTIONAL { <uri_value> drugbank:molecularWeight ?molecularWeight }
+       OPTIONAL { <uri_value> drugbank:numberOfResidues ?numberOfResidues }
+       OPTIONAL { <uri_value> drugbank:pdbIdPage ?pdbIdPage }
+       OPTIONAL { <uri_value> drugbank:specificFunction ?specificFunction }
+       OPTIONAL { <uri_value> drugbank:theoreticalPi ?theoreticalPi }
+     }
+   }
+ }
