@@ -1,5 +1,6 @@
 #compound_uris_for_name.txt
-# find compound URIS based on string matching for labels, synonyms, and brand names 
+# find compound URIS based on string matching for labels, synonyms, and brand names
+ 
 PREFIX drugbank: <http://hcls.sindice.com/drugbank_vocabulary:>
 PREFIX chembl: <http://hcls.sindice.com/chembl_vocabulary:>
 SELECT *

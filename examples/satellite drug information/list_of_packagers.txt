@@ -1,0 +1,12 @@
+# list_of_packagers.txt
+# find out the list of packagers for a drug in DRUGBANK
+# this is a virtuoso specific query as it makes use of the group_digest function to pretty the result output.
+
+PREFIX drugbank: <http://hcls.sindice.com/drugbank_vocabulary:>
+SELECT ?drug ?drug_name (sql:GROUP_DIGEST( ?packager , ' , ',1000,1))
+WHERE{
+ ?drug a drugbank:Drug ;
+	 <http://purl.org/dc/terms/title> ?drug_name ;
+	 drugbank:packager ?x .
+ ?x <http://purl.org/dc/terms/title> ?packager ; a drugbank:Packager .
+} ORDER BY DESC(COUNT(?x))

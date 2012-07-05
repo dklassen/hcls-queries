@@ -1,6 +1,5 @@
 # retrive side effect information based on URI
 # replace ?sider_drug in first part of query and [] in second part
-# to the <uri> you wish to retrieve.
 
 PREFIX drugbank: <http://hcls.sindice.com/drugbank_vocabulary:>
 PREFIX chembl: <http://hcls.sindice.com/chembl_vocabulary:>

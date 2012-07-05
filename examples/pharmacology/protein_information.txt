@@ -2,7 +2,11 @@
 # returns information about the protein in the cache. Essentially this is the "target by name" lookup.
 
 PREFIX drugbank: <http://hcls.sindice.com/drugbank_vocabulary:>
-
+PREFIX chembl: <http://hcls.sindice.com/chembl_vocabulary:>
+SELECT *
+WHERE{
+  ?target chembl:keywords
+}
 
 
 

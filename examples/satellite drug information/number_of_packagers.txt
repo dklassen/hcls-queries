@@ -1,0 +1,10 @@
+# packager.txt
+# find out the number of packagers per drug in DRUGBANK
+
+PREFIX drugbank: <http://hcls.sindice.com/drugbank_vocabulary:>
+SELECT ?drug COUNT(?x AS ?number_packagers) 
+WHERE{
+ ?drug a drugbank:Drug ;
+ drugbank:packager ?x .
+ ?x <http://purl.org/dc/terms/title> ?packager ; a drugbank:Packager .
+} ORDER BY DESC(COUNT(?x))
